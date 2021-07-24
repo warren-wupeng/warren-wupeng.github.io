@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
-  <icon>http://example.com/icon.png</icon>
+  <title>tombstone of wupeng</title>
+  <icon>http://wupeng.tech/icon.png</icon>
   
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="http://wupeng.tech/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="http://wupeng.tech/"/>
   <updated>2021-07-22T15:24:10.827Z</updated>
-  <id>http://example.com/</id>
+  <id>http://wupeng.tech/</id>
   
   <author>
     <name>wupeng</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>test_my_site</title>
-    <link href="http://example.com/2021/07/22/test-my-site/"/>
-    <id>http://example.com/2021/07/22/test-my-site/</id>
+    <link href="http://wupeng.tech/2021/07/22/test-my-site/"/>
+    <id>http://wupeng.tech/2021/07/22/test-my-site/</id>
     <published>2021-07-22T15:24:10.000Z</published>
     <updated>2021-07-22T15:24:10.827Z</updated>
     
@@ -31,8 +31,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2021/07/22/hello-world/"/>
-    <id>http://example.com/2021/07/22/hello-world/</id>
+    <link href="http://wupeng.tech/2021/07/22/hello-world/"/>
+    <id>http://wupeng.tech/2021/07/22/hello-world/</id>
     <published>2021-07-22T15:22:30.677Z</published>
     <updated>2021-07-22T15:22:30.677Z</updated>
     
