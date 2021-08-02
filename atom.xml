@@ -6,7 +6,7 @@
   <link href="http://wupeng.tech/atom.xml" rel="self"/>
   
   <link href="http://wupeng.tech/"/>
-  <updated>2021-07-26T01:30:24.183Z</updated>
+  <updated>2021-08-02T01:47:16.306Z</updated>
   <id>http://wupeng.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mongodb 数据模型设计思路</title>
+    <link href="http://wupeng.tech/2021/07/30/mongodb-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/"/>
+    <id>http://wupeng.tech/2021/07/30/mongodb-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/</id>
+    <published>2021-07-30T07:37:12.000Z</published>
+    <updated>2021-08-02T01:47:16.306Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;步骤一：从业务逻辑视角建立基础模型&lt;/li&gt;
+&lt;li&gt;步骤二：考虑技术需求做优化&lt;/li&gt;
+&lt;li&gt;步骤三：看是否有行业成熟的设计模式可以直接套用&lt;/li&gt;
+&lt;/ul&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>读书笔记：今日简史</title>
@@ -29,61 +55,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;读书笔记：《今日简史》&quot;&gt;&lt;a href=&quot;#读书笔记：《今日简史》&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>book digest: 21 lessons for the 21 century</title>
-    <link href="http://wupeng.tech/2021/07/25/book-digest-21-lessons-for-the-21-century/"/>
-    <id>http://wupeng.tech/2021/07/25/book-digest-21-lessons-for-the-21-century/</id>
-    <published>2021-07-25T11:12:58.000Z</published>
-    <updated>2021-07-25T11:22:50.209Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;book-digest&quot;&gt;&lt;a href=&quot;#book-digest&quot; class=&quot;headerlink&quot; title=&quot;book digest:&quot;&gt;&lt;/a&gt;book</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>test_my_site</title>
-    <link href="http://wupeng.tech/2021/07/22/test-my-site/"/>
-    <id>http://wupeng.tech/2021/07/22/test-my-site/</id>
-    <published>2021-07-22T15:24:10.000Z</published>
-    <updated>2021-07-22T15:24:10.827Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://wupeng.tech/2021/07/22/hello-world/"/>
-    <id>http://wupeng.tech/2021/07/22/hello-world/</id>
-    <published>2021-07-22T15:22:30.677Z</published>
-    <updated>2021-07-22T15:22:30.677Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
         
       
     
