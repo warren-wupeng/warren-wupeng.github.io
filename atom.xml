@@ -6,7 +6,7 @@
   <link href="http://wupeng.tech/atom.xml" rel="self"/>
   
   <link href="http://wupeng.tech/"/>
-  <updated>2021-08-05T03:03:02.944Z</updated>
+  <updated>2021-08-05T03:23:32.822Z</updated>
   <id>http://wupeng.tech/</id>
   
   <author>
@@ -17,11 +17,26 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>读书笔记：第三章 模块化 Fundamentals of Software Architecture</title>
-    <link href="http://wupeng.tech/2021/08/04/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96-Fundamentals-of-Software-Architecture/"/>
-    <id>http://wupeng.tech/2021/08/04/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%A8%A1%E5%9D%97%E5%8C%96-Fundamentals-of-Software-Architecture/</id>
+    <title>架构特性 Fundamental of Software Architecture 第四章</title>
+    <link href="http://wupeng.tech/2021/08/05/%E6%9E%B6%E6%9E%84%E7%89%B9%E6%80%A7-Fundamental-of-Software-Architecture-%E7%AC%AC%E5%9B%9B%E7%AB%A0/"/>
+    <id>http://wupeng.tech/2021/08/05/%E6%9E%B6%E6%9E%84%E7%89%B9%E6%80%A7-Fundamental-of-Software-Architecture-%E7%AC%AC%E5%9B%9B%E7%AB%A0/</id>
+    <published>2021-08-05T03:20:50.000Z</published>
+    <updated>2021-08-05T03:23:32.822Z</updated>
+    
+    
+    
+    
+    
+    <category term="读书笔记" scheme="http://wupeng.tech/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模块化 Fundamentals of Software Architecture 第三章</title>
+    <link href="http://wupeng.tech/2021/08/04/%E6%A8%A1%E5%9D%97%E5%8C%96-Fundamentals-of-Software-Architecture-%E7%AC%AC%E4%B8%89%E7%AB%A0/"/>
+    <id>http://wupeng.tech/2021/08/04/%E6%A8%A1%E5%9D%97%E5%8C%96-Fundamentals-of-Software-Architecture-%E7%AC%AC%E4%B8%89%E7%AB%A0/</id>
     <published>2021-08-04T08:44:48.000Z</published>
-    <updated>2021-08-05T03:03:02.944Z</updated>
+    <updated>2021-08-05T03:23:43.116Z</updated>
     
     
       
@@ -35,14 +50,16 @@
     
     
     
+    <category term="读书笔记" scheme="http://wupeng.tech/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
   </entry>
   
   <entry>
-    <title>读书笔记：第二章 架构思维 Fundamentals of Software Architecture</title>
-    <link href="http://wupeng.tech/2021/08/04/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%9E%B6%E6%9E%84%E6%80%9D%E7%BB%B4-Fundamentals-of-Software-Architecture/"/>
-    <id>http://wupeng.tech/2021/08/04/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%9E%B6%E6%9E%84%E6%80%9D%E7%BB%B4-Fundamentals-of-Software-Architecture/</id>
+    <title>架构思维 Fundamentals of Software Architecture 第二章</title>
+    <link href="http://wupeng.tech/2021/08/04/%E6%9E%B6%E6%9E%84%E6%80%9D%E7%BB%B4-Fundamentals-of-Software-Architecture-%E7%AC%AC%E4%BA%8C%E7%AB%A0/"/>
+    <id>http://wupeng.tech/2021/08/04/%E6%9E%B6%E6%9E%84%E6%80%9D%E7%BB%B4-Fundamentals-of-Software-Architecture-%E7%AC%AC%E4%BA%8C%E7%AB%A0/</id>
     <published>2021-08-04T08:43:32.000Z</published>
-    <updated>2021-08-04T08:44:15.389Z</updated>
+    <updated>2021-08-05T03:23:21.275Z</updated>
     
     
       
@@ -56,14 +73,16 @@
     
     
     
+    <category term="读书笔记" scheme="http://wupeng.tech/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
   </entry>
   
   <entry>
-    <title>读书笔记：第一章 架构的定义 Fundamentals of Software Architecture</title>
-    <link href="http://wupeng.tech/2021/08/04/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89-Fundamentals-of-Software-Architecture/"/>
-    <id>http://wupeng.tech/2021/08/04/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89-Fundamentals-of-Software-Architecture/</id>
+    <title>架构的定义 Fundamentals of Software Architecture 第一章</title>
+    <link href="http://wupeng.tech/2021/08/04/%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89-Fundamentals-of-Software-Architecture-%E7%AC%AC%E4%B8%80%E7%AB%A0/"/>
+    <id>http://wupeng.tech/2021/08/04/%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AE%9A%E4%B9%89-Fundamentals-of-Software-Architecture-%E7%AC%AC%E4%B8%80%E7%AB%A0/</id>
     <published>2021-08-04T05:40:52.000Z</published>
-    <updated>2021-08-04T08:45:36.935Z</updated>
+    <updated>2021-08-05T03:23:07.116Z</updated>
     
     
       
@@ -76,6 +95,8 @@
     
     
     
+    
+    <category term="读书笔记" scheme="http://wupeng.tech/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
