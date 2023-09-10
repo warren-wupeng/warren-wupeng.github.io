@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>读书笔记 人类简史 | Hexo</title>
+  <title>高并发问题解决基本思路 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="人工智能可能会导致大量人失去工作 人工智能可能会创造出来的新工作如人工智能的维护和运用 但是这些工作需要的知识技能不是短时间内能够学习得到的 成为人工智能的驾驭者半人马可能是一种思路 但是人类在半人马人机合作中可能会越来越不重要 政府可能需要给失业的个人提供更多协助 全民基本收入可能是一种社会制度 提供意义和社群将有可能比对工作的追求更有意义 生态危机，科技颠覆，">
+  <meta name="description" content="高并发问题解决基本思路高并发问题的本质是有限的资源应对大量的请求 一般存在以下解决方向  提高单位资源处理能力  增加资源  减少请求  提升处理速度   以下分别讨论 提高单位资源处理能力 一般是采用更高性能的硬件或者更有针对性的硬件驱动。例如，使用固态硬盘替换机械硬盘以提升MySQL的处理能力 增加资源数量 单位资源的处理能力总是受制于物理极限的天花板，并且高性能硬件往往更加昂贵。因此通过增加">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读书笔记 人类简史">
-<meta property="og:url" content="http://example.com/2021/07/25/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%BA%E7%B1%BB%E7%AE%80%E5%8F%B2/index.html">
+<meta property="og:title" content="高并发问题解决基本思路">
+<meta property="og:url" content="http://example.com/2023/04/18/%E9%AB%98%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="人工智能可能会导致大量人失去工作 人工智能可能会创造出来的新工作如人工智能的维护和运用 但是这些工作需要的知识技能不是短时间内能够学习得到的 成为人工智能的驾驭者半人马可能是一种思路 但是人类在半人马人机合作中可能会越来越不重要 政府可能需要给失业的个人提供更多协助 全民基本收入可能是一种社会制度 提供意义和社群将有可能比对工作的追求更有意义 生态危机，科技颠覆，">
+<meta property="og:description" content="高并发问题解决基本思路高并发问题的本质是有限的资源应对大量的请求 一般存在以下解决方向  提高单位资源处理能力  增加资源  减少请求  提升处理速度   以下分别讨论 提高单位资源处理能力 一般是采用更高性能的硬件或者更有针对性的硬件驱动。例如，使用固态硬盘替换机械硬盘以提升MySQL的处理能力 增加资源数量 单位资源的处理能力总是受制于物理极限的天花板，并且高性能硬件往往更加昂贵。因此通过增加">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-25T09:27:24.000Z">
-<meta property="article:modified_time" content="2023-09-10T09:28:15.509Z">
+<meta property="article:published_time" content="2023-04-18T09:40:21.000Z">
+<meta property="article:modified_time" content="2023-09-10T11:00:41.832Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -75,10 +75,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-读书笔记-人类简史" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-高并发问题解决基本思路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/07/25/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%BA%E7%B1%BB%E7%AE%80%E5%8F%B2/" class="article-date">
-  <time class="dt-published" datetime="2021-07-25T09:27:24.000Z" itemprop="datePublished">2021-07-25</time>
+    <a href="/2023/04/18/%E9%AB%98%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/" class="article-date">
+  <time class="dt-published" datetime="2023-04-18T09:40:21.000Z" itemprop="datePublished">2023-04-18</time>
 </a>
     
   </div>
@@ -89,7 +89,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      读书笔记 人类简史
+      高并发问题解决基本思路
     </h1>
   
 
@@ -97,20 +97,70 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>人工智能可能会导致大量人失去工作</p>
-<p>人工智能可能会创造出来的新工作如人工智能的维护和运用</p>
-<p>但是这些工作需要的知识技能不是短时间内能够学习得到的</p>
-<p>成为人工智能的驾驭者半人马可能是一种思路</p>
-<p>但是人类在半人马人机合作中可能会越来越不重要</p>
-<p>政府可能需要给失业的个人提供更多协助</p>
-<p>全民基本收入可能是一种社会制度</p>
-<p>提供意义和社群将有可能比对工作的追求更有意义</p>
-<p>生态危机，科技颠覆，</p>
+        <h3 id="高并发问题解决基本思路"><a href="#高并发问题解决基本思路" class="headerlink" title="高并发问题解决基本思路"></a>高并发问题解决基本思路</h3><p>高并发问题的本质是有限的资源应对大量的请求</p>
+<p>一般存在以下解决方向</p>
+<ul>
+<li><p>提高单位资源处理能力</p>
+</li>
+<li><p>增加资源</p>
+</li>
+<li><p>减少请求</p>
+</li>
+<li><p>提升处理速度</p>
+</li>
+</ul>
+<p>以下分别讨论</p>
+<p>提高单位资源处理能力</p>
+<p>一般是采用更高性能的硬件或者更有针对性的硬件驱动。例如，使用固态硬盘替换机械硬盘以提升MySQL的处理能力</p>
+<p>增加资源数量</p>
+<p>单位资源的处理能力总是受制于物理极限的天花板，并且高性能硬件往往更加昂贵。因此通过增加资源数量来提升处理能力才是主流。这种方式也称为水平扩展。水平扩展要能实现并非无代价，代价就是无状态性。要满足无状态性通常有三种方案</p>
+<ul>
+<li><p>相同session路由到同一服务器</p>
+</li>
+<li><p>集中session存储</p>
+</li>
+<li><p>只用token存储session状态</p>
+</li>
+</ul>
+<p>减少请求</p>
+<p>减少请求一般有三种思路</p>
+<ul>
+<li><p>错峰</p>
+</li>
+<li><p>排队</p>
+</li>
+<li><p>限流</p>
+</li>
+</ul>
+<p>处理速度</p>
+<p>请求到一般处理流程是</p>
+<p>前端访问-&gt;前置条件校验-&gt;业务处理-&gt;数据存储-&gt;结果响应返回。</p>
+<p>根据经验，前置条件校验，业务处理，数据库IO是耗时关键</p>
+<p>前置条件校验优化思路：</p>
+<ul>
+<li>缓存：前置条件校验一般是查询多，解决思路是使用更近的存储，代价是需要维护缓存一致性。</li>
+</ul>
+<p>业务处理优化思路：</p>
+<ul>
+<li><p>异步：有些处理并不是实时需要，如通知等，可以异步处理</p>
+</li>
+<li><p>并行：业务处理往往包含许多步骤，假如有些步骤没有依赖关系，可以并行处理，根据情况采用合适的并发模型。假如有依赖关系也可以尝试重新设计数据模型消除依赖。并行的代价是提升编码复杂性，需要小心设计避免资源竞争问题</p>
+</li>
+</ul>
+<p>数据库IO优化思路：</p>
+<ul>
+<li><p>缓存：尽量使用缓存分担数据库查询压力</p>
+</li>
+<li><p>分散：例如MySQL主从模式分散请求流量</p>
+</li>
+<li><p>异步持久化：需要极致性能的场景不要直接磁盘访问。通过kafka之类的消息中间件异步持久化</p>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/25/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E4%BA%BA%E7%B1%BB%E7%AE%80%E5%8F%B2/" data-id="clmdckqvb0005smxr4aijhcq7" data-title="读书笔记 人类简史" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/04/18/%E9%AB%98%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/" data-id="clmdckqvd0009smxracjue84j" data-title="高并发问题解决基本思路" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -120,15 +170,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/08/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%B8%80%E7%AB%A0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          读书笔记 架构 第一章
-        
-      </div>
-    </a>
   
+    <a href="/2022/12/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E9%A2%86%E5%9F%9F%E7%9A%84%E6%A0%87%E5%BA%A6%E5%AF%B9%E7%A7%B0%E6%80%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">计算机科学领域的标度对称性</div>
+    </a>
   
 </nav>
 
