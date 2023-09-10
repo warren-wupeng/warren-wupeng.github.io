@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
@@ -17,12 +18,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
+    <meta name="description" content="code, architecture, engineering">
+<meta property="og:type" content="blog">
 <meta property="og:title" content="Warren&#39;s Blog">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Warren&#39;s Blog">
+<meta property="og:description" content="code, architecture, engineering">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Warren Wu">
 <meta name="twitter:card" content="summary">
@@ -58,6 +61,9 @@
       <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -78,6 +84,10 @@
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
 
 
 
@@ -106,13 +116,13 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Warren Wu</p>
-  <div class="site-description" itemprop="description"></div>
+  <div class="site-description" itemprop="description">code, architecture, engineering</div>
 </div>
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -139,6 +149,156 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/10/%E5%A6%82%E4%BD%95%E5%81%9A%E9%9C%80%E6%B1%82%E6%94%B6%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Warren Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Warren's Blog">
+      <meta itemprop="description" content="code, architecture, engineering">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Warren's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/10/%E5%A6%82%E4%BD%95%E5%81%9A%E9%9C%80%E6%B1%82%E6%94%B6%E9%9B%86/" class="post-title-link" itemprop="url">如何做需求收集</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-09-10 21:06:16 / Modified: 22:43:43" itemprop="dateCreated datePublished" datetime="2023-09-10T21:06:16+08:00">2023-09-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>做需求收集有很多方法论，我个人认可的有以下这些</p>
+<ul>
+<li>用例 （Use Case)</li>
+<li>用户故事 (User Story)</li>
+<li>用户故事地图 (User Story Mapping)</li>
+<li>影响地图 (Impact Mapping)</li>
+</ul>
+<h1 id="用例"><a href="#用例" class="headerlink" title="用例"></a>用例</h1><p>用例是一种识别、澄清和组织系统需求的方法论。它一般配合UML图一起使用，是一种有效的需求沟通工具。它是最早出现的需求收集分析的方法论。<br>以下是一个用例图的示例</p>
+<pre class="mermaid">
+graph LR
+A[Actor] --&gt; B((Use Case 1))
+A --&gt; C((Use Case 2))
+B --&gt; D{System}
+C --&gt; D
+D --&gt; E[Actor]
+D --&gt; F[Actor]
+</pre>
+
+
+<p>用例技术非常有用，但是也存在局限性<br>使用use case收集分析需求的局限性包括以下几点：</p>
+<ol>
+<li><p>复杂性：使用use case方法需要详细描述系统的各种功能和交互，特别是在大型系统中，可能会导致大量的use case，难以管理和维护。</p>
+</li>
+<li><p>语言障碍：use case通常使用专业的技术术语和领域特定的语言，可能会导致与非技术人员的沟通困难。</p>
+</li>
+<li><p>详细度：use case需要详细描述系统的各种功能和交互，可能会导致过度关注细节而忽视整体需求。</p>
+</li>
+<li><p>可变性：use case通常是一次性的文档，一旦编写完成，很难进行修改和更新，随着需求的变化，可能会导致use case的失效。</p>
+</li>
+</ol>
+<p>为了解决use case方法的局限性，用户故事（user story）方法产生了。</p>
+<h1 id="用户故事"><a href="#用户故事" class="headerlink" title="用户故事"></a>用户故事</h1><p>用户故事是一种简洁的描述用户需求的方法，强调与用户的对话和协作，而不是详细的文档。用户故事通常以如下形式描述：作为一个[角色]，我想要[目标]，以便[原因]。用户故事易于理解和记录，并且可以随时修改和更新，以适应需求的变化。此外，用户故事注重用户价值和用户体验，更侧重于用户需求的核心，而不是过度关注技术细节。因此，用户故事方法更加适用于敏捷开发等快速迭代的开发方法。</p>
+<p>用户故事是敏捷开发中的一种需求描述技术，它用简洁的语言描述用户的需求和期望，以便开发团队能够更好地理解用户的需求并提供相应的解决方案。</p>
+<p>用户故事通常包含以下要素：</p>
+<ol>
+<li><p>角色：用户故事描述了一个特定的用户或角色，例如“作为一名购物者”或“作为一名管理员”。</p>
+</li>
+<li><p>目标：用户故事描述了用户想要实现的目标或期望的结果，例如“我希望能够浏览商品并添加到购物车”或“我希望能够管理用户账户”。</p>
+</li>
+<li><p>动作：用户故事描述了用户采取的行动或操作，例如“我点击商品列表并浏览商品详情页面”或“我登录系统并更新用户信息”。</p>
+</li>
+<li><p>价值：用户故事描述了用户从实现目标中获得的价值或好处，例如“通过浏览商品并添加到购物车，我能够方便地购买所需的商品”或“通过管理用户账户，我可以更好地控制和保护我的个人信息”。</p>
+</li>
+</ol>
+<p>用户故事通常以以下格式进行描述：作为一个[角色]，我想要[目标]，以便[价值]。开发团队可以根据用户故事来制定开发计划、优先级和测试方案，以确保最终产品符合用户的需求。</p>
+<p>用户故事很棒，但是当你有成百上千个用户故事卡片，如何得到一个全局视图而不迷失在细节碎片中呢？如何为这些需求规划优先级呢？</p>
+<p>为了解决这些问题，用户故事地图方法诞生了</p>
+<h1 id="用户故事地图"><a href="#用户故事地图" class="headerlink" title="用户故事地图"></a>用户故事地图</h1><p>用户故事地图是一种工具，用于可视化和组织用户故事。它是一个二维图表，横轴表示用户故事的优先级，纵轴表示用户故事的主题或功能。用户故事地图按照用户的需求和优先级进行排列，使团队可以清晰地了解整个产品的功能和用户需求。</p>
+<p>用户故事地图有以下几个用途：</p>
+<ol>
+<li><p>产品规划：用户故事地图可以帮助团队理解产品的整体功能和用户需求，以便更好地进行产品规划和决策。</p>
+</li>
+<li><p>优先级排序：通过用户故事地图，团队可以根据用户故事的优先级进行排序，确定哪些功能是最重要的，以便在开发过程中优先实现。</p>
+</li>
+<li><p>交流和沟通：用户故事地图可以作为一个视觉化的工具，帮助团队成员之间更好地交流和沟通，共享对产品功能和用户需求的理解。</p>
+</li>
+<li><p>追踪进展：通过用户故事地图，团队可以清晰地了解每个用户故事的状态和进展情况，以便及时调整和管理开发进度。</p>
+</li>
+</ol>
+<p>用户故事地图很好，但它是一种相对重量级的规划，同时它并没有产品带来的商业价值给予足够的考虑。在增长黑客方法论的引领下，<br>一种更适应快迭代，更强调组织业务目标的方法论产生了</p>
+<h1 id="影响力地图"><a href="#影响力地图" class="headerlink" title="影响力地图"></a>影响力地图</h1><p>影响力地图是一种轻量级的、协作的规划技术，适用于希望通过软件产品产生巨大影响的团队。它基于用户交互设计、结果驱动的规划和思维导图。影响力地图帮助交付团队和利益相关者可视化路线图，解释交付成果如何与用户需求相连接，并传达用户结果与更高级别组织目标之间的关系。</p>
+<p>影响力地图包括以下要素：</p>
+<ol>
+<li><p>组织目标：描述了组织希望实现的最终目标或结果。</p>
+</li>
+<li><p>用户结果：描述了用户希望通过软件产品实现的具体结果或价值。</p>
+</li>
+<li><p>交付成果：描述了软件产品或功能的具体交付成果。</p>
+</li>
+<li><p>任务：描述了为实现交付成果而需要执行的具体任务或行动。</p>
+</li>
+</ol>
+<pre class="mermaid">
+graph LR
+A[Organizational Goal] --&gt; B(User Outcome)
+B --&gt; C(Deliverables)
+C --&gt; D(Tasks)
+</pre>
+
+
+<p>总结<br>Use Case解决了清晰结构化描述需求的问题<br>User Story鼓励更多直接沟通，而不是通过文档沟通<br>User Story Mapping用于组织和规划大量的User Story<br>Impact Mapping强调业务目标的达成，只做对组织目标有益的事</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/18/%E9%AB%98%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -148,7 +308,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="code, architecture, engineering">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -282,7 +442,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="code, architecture, engineering">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -374,7 +534,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="code, architecture, engineering">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -464,7 +624,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="code, architecture, engineering">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -557,7 +717,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="code, architecture, engineering">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -660,7 +820,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="code, architecture, engineering">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -750,7 +910,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="code, architecture, engineering">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -829,7 +989,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="code, architecture, engineering">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -913,7 +1073,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="code, architecture, engineering">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -979,100 +1139,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%B8%89%E7%AB%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Warren Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Warren's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="post-title-link" itemprop="url">读书笔记 架构 第三章</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-05 17:34:40" itemprop="dateCreated datePublished" datetime="2021-08-05T17:34:40+08:00">2021-08-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-10 18:57:11" itemprop="dateModified" datetime="2023-09-10T18:57:11+08:00">2023-09-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>第三章：模块化<br>度量模块化<br>三个关键概念：</p>
-<p>内聚性（cohesion）<br>耦合性（coupling）<br>共生性（connascence）<br>内聚性<br>内聚性是指一个模块的所有部分必须在一起的程度。换句话说就是度量各个模块必须在一起的程度。理想状态下，一个内聚的模块所有的部分都必须在一起，因为如果把它们分成更小的碎片，就会导致其他模块必须通过模块间调用来得到有用结果，从而使得模块间更加耦合。</p>
-<p>内聚性度量，从最好到最差</p>
-<p>功能内聚：模块的每个组件都互相关联，并且模块只包含对功能必要的模块<br>顺序内聚：两个模块互动，一个模块输出数据，成为另一个模块的输入<br>通讯内聚：两个模块形成一个通讯链，每个模块各自操作信息并且&#x2F;或者产生一些产出。例如，添加一个记录到数据库并基于这些信息生成一个email<br>流程内聚：两个模块必须以一定顺序执行代码<br>时间内聚：模块在时间上依赖<br>逻辑内聚：模块内的数据逻辑上相关而非功能上相关。例如：有一个模块从文本，序列化对象或流中转化信息。操作是相关的但是功能是很不一样的。<br>意外耦合：模块中的要素除了在同一个源文件中以外互不相关。这是最糟糕的一种内聚<br>内聚性并不像耦合性一样有精确的度量指标。<br>一种度量方法<br>LCOM（Lack of Cohension in Methods)</p>
-<p>没有共用字段的方法数量</p>
-<p>耦合性<br>输入耦合：度量从外向内的连接数<br>输出耦合：度量从内向外的连接数<br>抽象性，不稳定性和主序列距离<br>抽象性是指抽象和实现的比例。度量抽象和实现的比例。例如：假如一个代码仓库只有一个main函数，这个代码仓的抽象度为0.另一个极端是，一个代码库有太多抽象，让开发者难以理解</p>
-<p>不稳定性度量代码的易变性。例如，假如一个类调用了很多其他类的方法，那它就很不稳定</p>
-<p>抽象的代码通常更稳定，但是更无用，更难理解。<br>当我们对代码做抽象的时候需要考虑它带来多少稳定性，否则付出的难以理解就是不值得的。</p>
-<p>共生性（Connascence）<br>如果两个模块，其中一个的改变需要另一个也相应改变以保持系统整体的正确性，那么我们说这个两个模块是共生的</p>
-<p>两类共生性</p>
-<p>静态共生性<br>动态共生性<br>各种共生性按从优到差的顺序排列依次是：</p>
-<p>静态共生性包括</p>
-<p>命名共生性：模块之间必须约定实体命名<br>类型共生性：模块之间必须约定实体的类型<br>意义共生性：模块之间必须约定实体的意义<br>位置共生性：模块之间必须约定实体的顺序<br>算法共生性：模块之间必须约定算法<br>动态共生性包括</p>
-<p>执行共生性：模块之间的执行顺序影响结果<br>时间共生性：多个模块的执行时间点影响结果。例如两个线程使用同一内存的同时执行<br>值共生生性：多个值必须同时更改。例如用四个顶点坐标来表示一个长方形，那么为了保持数据结构的完整性，就不能随意修改单独一个点的坐标<br>身份共生性：多个模块必须引用同一实体<br>代码重构时，要把差的共生关系改变成更好的共生关系</p>
-<p>区域性<br>距离很远的模块有强共生性就意味着糟糕的耦合，而距离相近的代码具有共生性是可以的。</p>
-<p>程度<br>共生的程度是指影响的规模。只是影响很少的类还是很多？假如你只有很少几个模块，那么有动态共生性也不是很可怕，但是，通常代码会随时间增长让问题越来越大</p>
-<p>提升系统模块化的三个建议</p>
-<p>通过把系统拆分成多个封装要素最小化整体共生性<br>最小化其他遗留的跨越封装边界的共生性<br>最大化封装边界内部的共生性<br>传奇的软件架构创新者Jim Weirich的两条建议：</p>
-<p>影响法则：把影响大的共生性转化成弱的共生性<br>区域法则：软件要素之间的距离越远，越要使用更弱的共生性<br>以上是1990年代的共生性理论，它对于现代架构师面临的问题并没有给出解决方案</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1091,19 +1157,13 @@
     </span>
     <span class="author" itemprop="copyrightHolder">Warren Wu</span>
   </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
     </div>
   </footer>
 
   
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
   <div class="back-to-top" role="button" aria-label="Back to top">
     <i class="fa fa-arrow-up fa-lg"></i>
     <span>0%</span>
@@ -1116,10 +1176,12 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
 
 
 
