@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>读书笔记 架构 第二章 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="架构思维 《软件架构：架构模式、特征及实现指南》 第二章Posted on Aug 4, 2021第二章：架构思维理解架构和设计的不同，并且知道如何与团队成员协作以便让架构落地需要有技术知识的宽度并维持一定的技术深度，以便能够看到其他人看不到的解决方案和可能性理解，分析，回溯各种解决方案和技术的取舍理解业务驱动因素的重要性，以及如何把它们翻译成架构考量架构VS设计传统的工作方式如下： 架构师的任务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记 架构 第二章">
+<meta property="og:url" content="http://example.com/2023/09/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%BA%8C%E7%AB%A0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="架构思维 《软件架构：架构模式、特征及实现指南》 第二章Posted on Aug 4, 2021第二章：架构思维理解架构和设计的不同，并且知道如何与团队成员协作以便让架构落地需要有技术知识的宽度并维持一定的技术深度，以便能够看到其他人看不到的解决方案和可能性理解，分析，回溯各种解决方案和技术的取舍理解业务驱动因素的重要性，以及如何把它们翻译成架构考量架构VS设计传统的工作方式如下： 架构师的任务">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-10T09:33:48.000Z">
+<meta property="article:modified_time" content="2023-09-10T09:34:26.950Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-读书笔记-架构-第二章" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="article-date">
+  <time class="dt-published" datetime="2023-09-10T09:33:48.000Z" itemprop="datePublished">2023-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      读书笔记 架构 第二章
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>架构思维 《软件架构：架构模式、特征及实现指南》 第二章<br>Posted on Aug 4, 2021<br>第二章：架构思维<br>理解架构和设计的不同，并且知道如何与团队成员协作以便让架构落地<br>需要有技术知识的宽度并维持一定的技术深度，以便能够看到其他人看不到的解决方案和可能性<br>理解，分析，回溯各种解决方案和技术的取舍<br>理解业务驱动因素的重要性，以及如何把它们翻译成架构考量<br>架构VS设计<br>传统的工作方式如下：</p>
+<p>架构师的任务是分析业务需求以便提取和定义架构特性，选择适合问题领域的架构模式和风格，并创建组件。<br>从这些活动里创造出来的产物会分发给开发团队，开发团队的职责是创建每个组件的类图，创建UI界面并开发和测试源代码。</p>
+<p>但是这种方式通常会有问题。架构师的决策收不到开发者的反馈，开发者的设计得不到架构师的反馈</p>
+<p>正确的工作方式：<br>架构师和开发者必须在同一个虚拟团队，架构师直接给开发者提供指导</p>
+<p>技术广度<br>三种知识</p>
+<p>你知道的<br>你知道你不知道的<br>你不知道你不知道的<br>你知道的：必须维持</p>
+<p>作为架构师广度比深度更重要</p>
+<p>分析架构取舍<br>不能只知道架构优点而不知道架构缺点</p>
+<p>平衡架构和编码工作<br>避免瓶颈陷阱：不要承担项目关键路径上的代码<br>可以做非关键路径上的项目<br>可以做POC以验证架构决策<br>可以做技术债务<br>做bug修复<br>开发自动化工具帮助团队处理日常重复的事务<br>开发架构适应度函数<br>做代码评审</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/09/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" data-id="clmdab83u0006yuxr5zvmhn9b" data-title="读书笔记 架构 第二章" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/09/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%B8%89%E7%AB%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          读书笔记 架构 第三章
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/09/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%B8%80%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">读书笔记 架构 第一章</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/09/10/SaaS%E8%A1%8C%E4%B8%9A%E6%BC%8F%E6%96%97%E6%A8%A1%E5%9E%8B/">SaaS行业漏斗模型</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E9%A2%86%E5%9F%9F%E7%9A%84%E6%A0%87%E5%BA%A6%E5%AF%B9%E7%A7%B0%E6%80%A7/">计算机科学领域的标度对称性</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/10/%E9%AB%98%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/">高并发问题解决基本思路</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/10/%E8%AF%BB%E4%B9%A6%E9%9B%B7%E8%BE%BEby-ThoughtWorks/">读书雷达by ThoughtWorks</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/10/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">软件技术知识体系</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

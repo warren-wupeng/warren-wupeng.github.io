@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>高并发问题解决基本思路 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="高并发问题解决基本思路高并发问题的本质是有限的资源应对大量的请求 一般存在以下解决方向  提高单位资源处理能力  增加资源  减少请求  提升处理速度   以下分别讨论 提高单位资源处理能力 一般是采用更高性能的硬件或者更有针对性的硬件驱动。例如，使用固态硬盘替换机械硬盘以提升MySQL的处理能力 增加资源数量 单位资源的处理能力总是受制于物理极限的天花板，并且高性能硬件往往更加昂贵。因此通过增加">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高并发问题解决基本思路">
+<meta property="og:url" content="http://example.com/2023/09/10/%E9%AB%98%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="高并发问题解决基本思路高并发问题的本质是有限的资源应对大量的请求 一般存在以下解决方向  提高单位资源处理能力  增加资源  减少请求  提升处理速度   以下分别讨论 提高单位资源处理能力 一般是采用更高性能的硬件或者更有针对性的硬件驱动。例如，使用固态硬盘替换机械硬盘以提升MySQL的处理能力 增加资源数量 单位资源的处理能力总是受制于物理极限的天花板，并且高性能硬件往往更加昂贵。因此通过增加">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-10T09:40:21.000Z">
+<meta property="article:modified_time" content="2023-09-10T09:40:41.629Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-高并发问题解决基本思路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/10/%E9%AB%98%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/" class="article-date">
+  <time class="dt-published" datetime="2023-09-10T09:40:21.000Z" itemprop="datePublished">2023-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      高并发问题解决基本思路
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="高并发问题解决基本思路"><a href="#高并发问题解决基本思路" class="headerlink" title="高并发问题解决基本思路"></a>高并发问题解决基本思路</h3><p>高并发问题的本质是有限的资源应对大量的请求</p>
+<p>一般存在以下解决方向</p>
+<ul>
+<li><p>提高单位资源处理能力</p>
+</li>
+<li><p>增加资源</p>
+</li>
+<li><p>减少请求</p>
+</li>
+<li><p>提升处理速度</p>
+</li>
+</ul>
+<p>以下分别讨论</p>
+<p>提高单位资源处理能力</p>
+<p>一般是采用更高性能的硬件或者更有针对性的硬件驱动。例如，使用固态硬盘替换机械硬盘以提升MySQL的处理能力</p>
+<p>增加资源数量</p>
+<p>单位资源的处理能力总是受制于物理极限的天花板，并且高性能硬件往往更加昂贵。因此通过增加资源数量来提升处理能力才是主流。这种方式也称为水平扩展。水平扩展要能实现并非无代价，代价就是无状态性。要满足无状态性通常有三种方案</p>
+<ul>
+<li><p>相同session路由到同一服务器</p>
+</li>
+<li><p>集中session存储</p>
+</li>
+<li><p>只用token存储session状态</p>
+</li>
+</ul>
+<p>减少请求</p>
+<p>减少请求一般有三种思路</p>
+<ul>
+<li><p>错峰</p>
+</li>
+<li><p>排队</p>
+</li>
+<li><p>限流</p>
+</li>
+</ul>
+<p>处理速度</p>
+<p>请求到一般处理流程是</p>
+<p>前端访问-&gt;前置条件校验-&gt;业务处理-&gt;数据存储-&gt;结果响应返回。</p>
+<p>根据经验，前置条件校验，业务处理，数据库IO是耗时关键</p>
+<p>前置条件校验优化思路：</p>
+<ul>
+<li>缓存：前置条件校验一般是查询多，解决思路是使用更近的存储，代价是需要维护缓存一致性。</li>
+</ul>
+<p>业务处理优化思路：</p>
+<ul>
+<li><p>异步：有些处理并不是实时需要，如通知等，可以异步处理</p>
+</li>
+<li><p>并行：业务处理往往包含许多步骤，假如有些步骤没有依赖关系，可以并行处理，根据情况采用合适的并发模型。假如有依赖关系也可以尝试重新设计数据模型消除依赖。并行的代价是提升编码复杂性，需要小心设计避免资源竞争问题</p>
+</li>
+</ul>
+<p>数据库IO优化思路：</p>
+<ul>
+<li><p>缓存：尽量使用缓存分担数据库查询压力</p>
+</li>
+<li><p>分散：例如MySQL主从模式分散请求流量</p>
+</li>
+<li><p>异步持久化：需要极致性能的场景不要直接磁盘访问。通过kafka之类的消息中间件异步持久化</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/09/10/%E9%AB%98%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/" data-id="clmdab83w000byuxrfrri2g99" data-title="高并发问题解决基本思路" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/09/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E9%A2%86%E5%9F%9F%E7%9A%84%E6%A0%87%E5%BA%A6%E5%AF%B9%E7%A7%B0%E6%80%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          计算机科学领域的标度对称性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/09/10/%E8%AF%BB%E4%B9%A6%E9%9B%B7%E8%BE%BEby-ThoughtWorks/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">读书雷达by ThoughtWorks</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/09/10/SaaS%E8%A1%8C%E4%B8%9A%E6%BC%8F%E6%96%97%E6%A8%A1%E5%9E%8B/">SaaS行业漏斗模型</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E9%A2%86%E5%9F%9F%E7%9A%84%E6%A0%87%E5%BA%A6%E5%AF%B9%E7%A7%B0%E6%80%A7/">计算机科学领域的标度对称性</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/10/%E9%AB%98%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF/">高并发问题解决基本思路</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/10/%E8%AF%BB%E4%B9%A6%E9%9B%B7%E8%BE%BEby-ThoughtWorks/">读书雷达by ThoughtWorks</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/10/%E8%BD%AF%E4%BB%B6%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/">软件技术知识体系</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
