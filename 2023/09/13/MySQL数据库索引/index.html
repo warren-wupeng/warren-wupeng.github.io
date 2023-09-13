@@ -20,25 +20,27 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="code, architecture, engineering">
+    <meta name="description" content="青年：为什么需要索引? 大师：这是为了加速数据查找. 青年：嗯。。 大师：没懂？打个比方，你查字典是怎么查的？你会从头到尾一页一页翻吗？不，你会按拼音，偏旁，或者笔画，找到字所对应的页码，然后再直接翻到对应的页码上. 青年：有点懂了 大师：你经常用MySQL，你知道MySQL用什么数据结构做索引吗？ 青年：好像是叫B+树，但为啥叫B+树啊？ 大师：B+树是一种改进的B树。B树的B是Balanced">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Warren&#39;s Blog">
-<meta property="og:url" content="http://example.com/archives/2021/08/index.html">
+<meta property="og:title" content="MySQL数据库索引">
+<meta property="og:url" content="http://example.com/2023/09/13/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/index.html">
 <meta property="og:site_name" content="Warren&#39;s Blog">
-<meta property="og:description" content="code, architecture, engineering">
+<meta property="og:description" content="青年：为什么需要索引? 大师：这是为了加速数据查找. 青年：嗯。。 大师：没懂？打个比方，你查字典是怎么查的？你会从头到尾一页一页翻吗？不，你会按拼音，偏旁，或者笔画，找到字所对应的页码，然后再直接翻到对应的页码上. 青年：有点懂了 大师：你经常用MySQL，你知道MySQL用什么数据结构做索引吗？ 青年：好像是叫B+树，但为啥叫B+树啊？ 大师：B+树是一种改进的B树。B树的B是Balanced">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-13T01:28:25.000Z">
+<meta property="article:modified_time" content="2023-09-13T02:40:01.803Z">
 <meta property="article:author" content="Warren Wu">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/archives/2021/08/">
+<link rel="canonical" href="http://example.com/2023/09/13/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"archives/2021/08/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/09/13/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/","path":"2023/09/13/MySQL数据库索引/","title":"MySQL数据库索引"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Archive | Warren's Blog</title>
+<title>MySQL数据库索引 | Warren's Blog</title>
   
 
 
@@ -71,7 +73,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Warren's Blog</h1>
+      <p class="site-title">Warren's Blog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -139,129 +141,99 @@
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 15 posts in total. Keep on posting.</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/13/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Warren Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Warren's Blog">
+      <meta itemprop="description" content="code, architecture, engineering">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MySQL数据库索引 | Warren's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL数据库索引
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="Created: 2023-09-13 09:28:25 / Modified: 10:40:01" itemprop="dateCreated datePublished" datetime="2023-09-13T09:28:25+08:00">2023-09-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>青年：为什么需要索引?</p>
+<p>大师：这是为了加速数据查找.</p>
+<p>青年：嗯。。</p>
+<p>大师：没懂？打个比方，你查字典是怎么查的？你会从头到尾一页一页翻吗？不，你会按拼音，偏旁，或者笔画，找到字所对应的页码，然后再直接翻到对应的页码上.</p>
+<p>青年：有点懂了</p>
+<p>大师：你经常用MySQL，你知道MySQL用什么数据结构做索引吗？</p>
+<p>青年：好像是叫B+树，但为啥叫B+树啊？</p>
+<p>大师：B+树是一种改进的B树。B树的B是Balanced的缩写意思，Balanced Tree，就是平衡树。平衡意思是它会保持树的左右两边节点数量差距尽量小。</p>
+<p>青年：B+树相对B树改进在哪里呢？</p>
+<p>大师：问得好。<br>一是在于所有叶子节点位于同一层，并且并且通过指针连接成一个有序链表<br>二是非叶子节点不存储数据，只存储索引信息。<br>三是B+树每个节点可以存储多个关键字，这些关键字按生序排列</p>
+<p>青年：为什么要做这些改进，有啥作用？</p>
+<p>大师：是这样的。<br>第一，叶子结点连成链表，是为了让范围查询更高效。<br>第二，非叶子结点不存数据，这样索引就更适合放到内存里，<br>第三，节点可以存储多个关键字，那么树的高度就会相对低一点，查询的耗时跟树的高度是相关的，树的高度越低，查询性能就越好</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-21T17:35:43+08:00"
-              content="2021-08-21">
-          08-21
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-        <a class="post-title-link" href="/2021/08/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0/" itemprop="url">
-          <span itemprop="name">架构特性 《软件架构：架构模式、特征及实现指南》 第四章</span>
-        </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/10/%E5%A6%82%E4%BD%95%E5%81%9A%E9%9C%80%E6%B1%82%E6%94%B6%E9%9B%86/" rel="prev" title="如何做需求收集">
+                  <i class="fa fa-angle-left"></i> 如何做需求收集
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-07T17:35:43+08:00"
-              content="2021-08-07">
-          08-07
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2021/08/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%BA%94%E7%AB%A0/" itemprop="url">
-          <span itemprop="name">读书笔记 架构 第五章</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-05T17:34:40+08:00"
-              content="2021-08-05">
-          08-05
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2021/08/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%B8%89%E7%AB%A0/" itemprop="url">
-          <span itemprop="name">读书笔记 架构 第三章</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-04T17:33:48+08:00"
-              content="2021-08-04">
-          08-04
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2021/08/04/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" itemprop="url">
-          <span itemprop="name">读书笔记 架构 第二章</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-08-03T17:32:20+08:00"
-              content="2021-08-03">
-          08-03
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2021/08/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%B8%80%E7%AB%A0/" itemprop="url">
-          <span itemprop="name">读书笔记 架构 第一章</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 </div>
   </main>

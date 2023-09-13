@@ -122,7 +122,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,6 +140,87 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/13/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Warren Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Warren's Blog">
+      <meta itemprop="description" content="code, architecture, engineering">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Warren's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/13/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/" class="post-title-link" itemprop="url">MySQL数据库索引</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-09-13 09:28:25 / Modified: 10:40:01" itemprop="dateCreated datePublished" datetime="2023-09-13T09:28:25+08:00">2023-09-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>青年：为什么需要索引?</p>
+<p>大师：这是为了加速数据查找.</p>
+<p>青年：嗯。。</p>
+<p>大师：没懂？打个比方，你查字典是怎么查的？你会从头到尾一页一页翻吗？不，你会按拼音，偏旁，或者笔画，找到字所对应的页码，然后再直接翻到对应的页码上.</p>
+<p>青年：有点懂了</p>
+<p>大师：你经常用MySQL，你知道MySQL用什么数据结构做索引吗？</p>
+<p>青年：好像是叫B+树，但为啥叫B+树啊？</p>
+<p>大师：B+树是一种改进的B树。B树的B是Balanced的缩写意思，Balanced Tree，就是平衡树。平衡意思是它会保持树的左右两边节点数量差距尽量小。</p>
+<p>青年：B+树相对B树改进在哪里呢？</p>
+<p>大师：问得好。<br>一是在于所有叶子节点位于同一层，并且并且通过指针连接成一个有序链表<br>二是非叶子节点不存储数据，只存储索引信息。<br>三是B+树每个节点可以存储多个关键字，这些关键字按生序排列</p>
+<p>青年：为什么要做这些改进，有啥作用？</p>
+<p>大师：是这样的。<br>第一，叶子结点连成链表，是为了让范围查询更高效。<br>第二，非叶子结点不存数据，这样索引就更适合放到内存里，<br>第三，节点可以存储多个关键字，那么树的高度就会相对低一点，查询的耗时跟树的高度是相关的，树的高度越低，查询性能就越好</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1038,89 +1119,6 @@ C --&gt; D(Tasks)
 <h2 id="ISO定义的能力"><a href="#ISO定义的能力" class="headerlink" title="ISO定义的能力"></a>ISO定义的能力</h2><p>性能有效性：衡量在已知条件下，使用单位资源达成的性能。包括：<br>时间行为（响应时间，处理时间，吞吐量）<br>资源利用（使用资源的数量和类型）<br>能力（超出最大既定限制的程度）<br>兼容性：<br>系统和其他产品，系统或者模块能够交互信息的程度，<br>能够与其他系统在共享环境资源条件下共存的能力<br>可用性：用户可以有效，高效，满意地完成它的目标<br>可识别性：用户可以辨别系统是否适合他的需求<br>可学习性：用户可以轻松的学习如何使用软件<br>用户错误保护<br>可触达性：各自特征和能力的用户都能使用<br>可靠性<br>安全性<br>可维护性<br>可迁移性</p>
 <h2 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h2><p>永远不要瞄准最好的架构，要瞄准最不差的架构</p>
 <p>把架构设计成可迭代的</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%BA%94%E7%AB%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Warren Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="code, architecture, engineering">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Warren's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/07/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E4%BA%94%E7%AB%A0/" class="post-title-link" itemprop="url">读书笔记 架构 第五章</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-07 17:35:43" itemprop="dateCreated datePublished" datetime="2021-08-07T17:35:43+08:00">2021-08-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-10 18:58:13" itemprop="dateModified" datetime="2023-09-10T18:58:13+08:00">2023-09-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>识别架构特性《软件架构：架构模式、特征及实现指南》第五章<br>Posted on Aug 7, 2021<br>软件架构师要从以下三个方面识别架构特性：</p>
-<p>领域关注点<br>领域需求<br>隐性领域知识<br>从领域关注点识别架构特性<br>一个常见的错误：尝试设计一种支撑所有架构特性的</p>
-<p>一种比较好的方式是，先列出所有想到的架构特性在一个清单里，再让领域stakeholder挑选最重要的3个特性。</p>
-<p>把领域关注点翻译成架构特性</p>
-<p>并购和收购 -&gt; 互通性、可伸缩性、适配性、扩展性<br>上市时间 -&gt; 敏捷性、可测试性、易部署性<br>用户满意度 -&gt; 性能、可用性、容错性、可测试性、敏捷性、安全性<br>竞争优势 -&gt; 敏捷性、可测试性、易部署性、伸缩性、可用性、容错性<br>时间和预算 -&gt; 简单性、可行性<br>一件重要的事：上市时间并不等于敏捷性，而是敏捷性+可测试性+易部署性</p>
-<p>从需求中识别架构特性<br>显性架构特性</p>
-<p>隐性架构特性</p>
-<p>（没什么方法，只有靠经验了）</p>
 
       
     </div>
