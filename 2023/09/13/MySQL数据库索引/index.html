@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="青年：为什么需要索引? 大师：这是为了加速数据查找. 青年：嗯。。 大师：没懂？打个比方，你查字典是怎么查的？你会从头到尾一页一页翻吗？不，你会按拼音，偏旁，或者笔画，找到字所对应的页码，然后再直接翻到对应的页码上. 青年：有点懂了 大师：你经常用MySQL，你知道MySQL用什么数据结构做索引吗？ 青年：好像是叫B+树，但为啥叫B+树啊？ 大师：B+树是一种改进的B树。B树的B是Balanced">
+    <meta name="description" content="青年：为什么需要索引? 大师：这是为了加速数据查找. 青年：嗯。。 大师：没懂？打个比方，你查字典是怎么查的？你会从头到尾一页一页翻吗？不，你会按拼音，偏旁，或者笔画，找到字所对应的页码，然后再直接翻到对应的页码上. 青年：有点懂了 大师：你经常用MySQL，你知道MySQL使用什么数据结构吗？ 青年：好像是叫B+树，但为啥叫B+树啊？ 大师：B+树是一种改进的B树。B树的B是Balanced的缩">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="MySQL数据库索引">
 <meta property="og:url" content="http://example.com/2023/09/13/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95/index.html">
 <meta property="og:site_name" content="Warren&#39;s Blog">
-<meta property="og:description" content="青年：为什么需要索引? 大师：这是为了加速数据查找. 青年：嗯。。 大师：没懂？打个比方，你查字典是怎么查的？你会从头到尾一页一页翻吗？不，你会按拼音，偏旁，或者笔画，找到字所对应的页码，然后再直接翻到对应的页码上. 青年：有点懂了 大师：你经常用MySQL，你知道MySQL用什么数据结构做索引吗？ 青年：好像是叫B+树，但为啥叫B+树啊？ 大师：B+树是一种改进的B树。B树的B是Balanced">
+<meta property="og:description" content="青年：为什么需要索引? 大师：这是为了加速数据查找. 青年：嗯。。 大师：没懂？打个比方，你查字典是怎么查的？你会从头到尾一页一页翻吗？不，你会按拼音，偏旁，或者笔画，找到字所对应的页码，然后再直接翻到对应的页码上. 青年：有点懂了 大师：你经常用MySQL，你知道MySQL使用什么数据结构吗？ 青年：好像是叫B+树，但为啥叫B+树啊？ 大师：B+树是一种改进的B树。B树的B是Balanced的缩">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-13T01:28:25.000Z">
-<meta property="article:modified_time" content="2023-09-13T02:40:01.803Z">
+<meta property="article:modified_time" content="2023-09-14T13:43:08.550Z">
 <meta property="article:author" content="Warren Wu">
 <meta name="twitter:card" content="summary">
 
@@ -124,7 +124,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -180,9 +180,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-09-13 09:28:25 / Modified: 10:40:01" itemprop="dateCreated datePublished" datetime="2023-09-13T09:28:25+08:00">2023-09-13</time>
+      <time title="Created: 2023-09-13 09:28:25" itemprop="dateCreated datePublished" datetime="2023-09-13T09:28:25+08:00">2023-09-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-14 21:43:08" itemprop="dateModified" datetime="2023-09-14T21:43:08+08:00">2023-09-14</time>
     </span>
 
   
@@ -199,13 +205,22 @@
 <p>青年：嗯。。</p>
 <p>大师：没懂？打个比方，你查字典是怎么查的？你会从头到尾一页一页翻吗？不，你会按拼音，偏旁，或者笔画，找到字所对应的页码，然后再直接翻到对应的页码上.</p>
 <p>青年：有点懂了</p>
-<p>大师：你经常用MySQL，你知道MySQL用什么数据结构做索引吗？</p>
+<p>大师：你经常用MySQL，你知道MySQL使用什么数据结构吗？</p>
 <p>青年：好像是叫B+树，但为啥叫B+树啊？</p>
 <p>大师：B+树是一种改进的B树。B树的B是Balanced的缩写意思，Balanced Tree，就是平衡树。平衡意思是它会保持树的左右两边节点数量差距尽量小。</p>
 <p>青年：B+树相对B树改进在哪里呢？</p>
 <p>大师：问得好。<br>一是在于所有叶子节点位于同一层，并且并且通过指针连接成一个有序链表<br>二是非叶子节点不存储数据，只存储索引信息。<br>三是B+树每个节点可以存储多个关键字，这些关键字按生序排列</p>
 <p>青年：为什么要做这些改进，有啥作用？</p>
 <p>大师：是这样的。<br>第一，叶子结点连成链表，是为了让范围查询更高效。<br>第二，非叶子结点不存数据，这样索引就更适合放到内存里，<br>第三，节点可以存储多个关键字，那么树的高度就会相对低一点，查询的耗时跟树的高度是相关的，树的高度越低，查询性能就越好</p>
+<p>青年：原来如此。但是我知道这些有什么用呢？</p>
+<p>大师：别急呀。作为程序员你经常需要优化SQL的性能。要优化性能，理解B+树的特点是关键所在。<br>你听我慢慢道来。MySQL数据表是一颗使用主键搭建起来的B+树。叶子结点上存放着表的所有行。<br>其他索引也是B+树，只不过叶子结点上存放的是主键。</p>
+<p>大师：当一个query使用了索引时，往往先是从索引找到主键，再根据主键去主表查具体数据行<br>根据主键去主表查具体数据行的这个操作叫做回表，它往往很慢，因为主表上的具体数据行存储再磁盘上而不是内存里。<br>磁盘的一次随机寻址大约1千万纳秒，而一次内存寻址只需要100纳秒，相差十万倍。<br>所以回表是要尽量避免的。如何避免呢，当query所需要查的列就在索引中时，就不需要回表了。这样的请求就会很高效</p>
+<p>所以SQL优化的关键点就是</p>
+<ol>
+<li>SQL只查所需要的列</li>
+<li>针对对高频的查询，设计索引，使得所需要的列全部都在索引中</li>
+</ol>
+<p>青年：现在我明白了，为啥经常说禁止使用select *。原来是为了方便发现高频请求，以便设计索引。</p>
 
     </div>
 
@@ -224,6 +239,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/11/01/AWS-db-proxy/" rel="next" title="AWS db proxy">
+                  AWS db proxy <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -243,7 +261,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>

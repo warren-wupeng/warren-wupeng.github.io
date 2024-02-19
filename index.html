@@ -122,7 +122,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,6 +140,169 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/19/stream-respose-with-fastapi-and-langchain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Warren Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Warren's Blog">
+      <meta itemprop="description" content="code, architecture, engineering">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Warren's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/02/19/stream-respose-with-fastapi-and-langchain/" class="post-title-link" itemprop="url">stream respose with fastapi and langchain</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-02-19 15:55:44 / Modified: 15:59:37" itemprop="dateCreated datePublished" datetime="2024-02-19T15:55:44+08:00">2024-02-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>以下代码是一个使用FastAPI和Langchain的异步流处理的例子。它创建了一个FastAPI应用，该应用有一个POST路由&#x2F;stream，该路由接收一个消息，然后使用Langchain的ChatOpenAI模型生成一个响应流。<br>完整实例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> AsyncIterable, Awaitable</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> uvicorn</span><br><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv</span><br><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"><span class="keyword">from</span> fastapi.responses <span class="keyword">import</span> StreamingResponse</span><br><span class="line"><span class="keyword">from</span> langchain.callbacks <span class="keyword">import</span> AsyncIteratorCallbackHandler</span><br><span class="line"><span class="keyword">from</span> langchain.chat_models <span class="keyword">import</span> ChatOpenAI</span><br><span class="line"><span class="keyword">from</span> langchain.schema <span class="keyword">import</span> HumanMessage</span><br><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line"><span class="comment"># Two ways to load env variables</span></span><br><span class="line"><span class="comment"># 1.load env variables from .env file</span></span><br><span class="line">load_dotenv()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.manually set env variables</span></span><br><span class="line"><span class="keyword">if</span> <span class="string">&quot;OPENAI_API_KEY&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> os.environ:</span><br><span class="line">    os.environ[<span class="string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">app = FastAPI()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">send_message</span>(<span class="params">message: <span class="built_in">str</span></span>) -&gt; AsyncIterable[<span class="built_in">str</span>]:</span><br><span class="line">    callback = AsyncIteratorCallbackHandler()</span><br><span class="line">    model = ChatOpenAI(</span><br><span class="line">        streaming=<span class="literal">True</span>,</span><br><span class="line">        verbose=<span class="literal">True</span>,</span><br><span class="line">        callbacks=[callback],</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">wrap_done</span>(<span class="params">fn: Awaitable, event: asyncio.Event</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;Wrap an awaitable with a event to signal when it&#x27;s done or an exception is raised.&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">await</span> fn</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="comment"># <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;Caught exception: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            <span class="comment"># Signal the aiter to stop.</span></span><br><span class="line">            event.<span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Begin a task that runs in the background.</span></span><br><span class="line">    task = asyncio.create_task(wrap_done(</span><br><span class="line">        model.agenerate(messages=[[HumanMessage(content=message)]]),</span><br><span class="line">        callback.done),</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">for</span> token <span class="keyword">in</span> callback.aiter():</span><br><span class="line">        <span class="comment"># Use server-sent-events to stream the response</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="string">f&quot;data: <span class="subst">&#123;token&#125;</span>\n\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> task</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">StreamRequest</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Request body for streaming.&quot;&quot;&quot;</span></span><br><span class="line">    message: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.post(<span class="params"><span class="string">&quot;/stream&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">stream</span>(<span class="params">body: StreamRequest</span>):</span><br><span class="line">    <span class="keyword">return</span> StreamingResponse(send_message(body.message), media_type=<span class="string">&quot;text/event-stream&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    uvicorn.run(host=<span class="string">&quot;0.0.0.0&quot;</span>, port=<span class="number">8000</span>, app=app)</span><br></pre></td></tr></table></figure>
+
+<p>以下是代码的主要部分的解释：</p>
+<p>send_message函数：这是一个异步生成器函数，它接收一个消息，然后使用Langchain的ChatOpenAI模型生成一个响应流。这个函数使用了一个AsyncIteratorCallbackHandler来处理模型的回调，并使用一个后台任务来运行模型的生成器函数。每当生成器产生一个新的令牌时，这个函数就会产生一个新的服务器发送的事件。</p>
+<p>StreamRequest类：这是一个Pydantic模型，用于验证流请求的请求体。它只有一个字段message，表示要发送的消息。</p>
+<p>&#x2F;stream路由：这是一个POST路由，它接收一个StreamRequest对象，然后调用send_message函数来生成一个响应流。它使用StreamingResponse来返回这个流，媒体类型设置为text&#x2F;event-stream，这是服务器发送的事件的标准媒体类型。</p>
+<p>主函数：如果这个脚本作为主程序运行，它将使用uvicorn来启动FastAPI应用。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/11/01/AWS-db-proxy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Warren Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Warren's Blog">
+      <meta itemprop="description" content="code, architecture, engineering">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Warren's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/11/01/AWS-db-proxy/" class="post-title-link" itemprop="url">AWS db proxy</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-11-01 13:19:05 / Modified: 14:59:59" itemprop="dateCreated datePublished" datetime="2023-11-01T13:19:05+08:00">2023-11-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>concepts</p>
+<ul>
+<li><p>connection pool</p>
+</li>
+<li><p>multiplexing</p>
+</li>
+<li><p>borrowing</p>
+</li>
+<li><p>pinning</p>
+</li>
+<li><p>target group</p>
+</li>
+<li><p>targets</p>
+</li>
+<li><p>transaction level reuse<br>若不使用autocommit,只有在rollback或者commit时才会复用连接</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -177,9 +340,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2023-09-13 09:28:25 / Modified: 10:40:01" itemprop="dateCreated datePublished" datetime="2023-09-13T09:28:25+08:00">2023-09-13</time>
+      <time title="Created: 2023-09-13 09:28:25" itemprop="dateCreated datePublished" datetime="2023-09-13T09:28:25+08:00">2023-09-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-09-14 21:43:08" itemprop="dateModified" datetime="2023-09-14T21:43:08+08:00">2023-09-14</time>
     </span>
 
   
@@ -197,13 +366,22 @@
 <p>青年：嗯。。</p>
 <p>大师：没懂？打个比方，你查字典是怎么查的？你会从头到尾一页一页翻吗？不，你会按拼音，偏旁，或者笔画，找到字所对应的页码，然后再直接翻到对应的页码上.</p>
 <p>青年：有点懂了</p>
-<p>大师：你经常用MySQL，你知道MySQL用什么数据结构做索引吗？</p>
+<p>大师：你经常用MySQL，你知道MySQL使用什么数据结构吗？</p>
 <p>青年：好像是叫B+树，但为啥叫B+树啊？</p>
 <p>大师：B+树是一种改进的B树。B树的B是Balanced的缩写意思，Balanced Tree，就是平衡树。平衡意思是它会保持树的左右两边节点数量差距尽量小。</p>
 <p>青年：B+树相对B树改进在哪里呢？</p>
 <p>大师：问得好。<br>一是在于所有叶子节点位于同一层，并且并且通过指针连接成一个有序链表<br>二是非叶子节点不存储数据，只存储索引信息。<br>三是B+树每个节点可以存储多个关键字，这些关键字按生序排列</p>
 <p>青年：为什么要做这些改进，有啥作用？</p>
 <p>大师：是这样的。<br>第一，叶子结点连成链表，是为了让范围查询更高效。<br>第二，非叶子结点不存数据，这样索引就更适合放到内存里，<br>第三，节点可以存储多个关键字，那么树的高度就会相对低一点，查询的耗时跟树的高度是相关的，树的高度越低，查询性能就越好</p>
+<p>青年：原来如此。但是我知道这些有什么用呢？</p>
+<p>大师：别急呀。作为程序员你经常需要优化SQL的性能。要优化性能，理解B+树的特点是关键所在。<br>你听我慢慢道来。MySQL数据表是一颗使用主键搭建起来的B+树。叶子结点上存放着表的所有行。<br>其他索引也是B+树，只不过叶子结点上存放的是主键。</p>
+<p>大师：当一个query使用了索引时，往往先是从索引找到主键，再根据主键去主表查具体数据行<br>根据主键去主表查具体数据行的这个操作叫做回表，它往往很慢，因为主表上的具体数据行存储再磁盘上而不是内存里。<br>磁盘的一次随机寻址大约1千万纳秒，而一次内存寻址只需要100纳秒，相差十万倍。<br>所以回表是要尽量避免的。如何避免呢，当query所需要查的列就在索引中时，就不需要回表了。这样的请求就会很高效</p>
+<p>所以SQL优化的关键点就是</p>
+<ol>
+<li>SQL只查所需要的列</li>
+<li>针对对高频的查询，设计索引，使得所需要的列全部都在索引中</li>
+</ol>
+<p>青年：现在我明白了，为啥经常说禁止使用select *。原来是为了方便发现高频请求，以便设计索引。</p>
 
       
     </div>
@@ -974,169 +1152,6 @@ C --&gt; D(Tasks)
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/25/%E8%AF%BB%E4%B9%A6%E9%9B%B7%E8%BE%BEby-ThoughtWorks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Warren Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="code, architecture, engineering">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Warren's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/25/%E8%AF%BB%E4%B9%A6%E9%9B%B7%E8%BE%BEby-ThoughtWorks/" class="post-title-link" itemprop="url">读书雷达by ThoughtWorks</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-25 17:39:07" itemprop="dateCreated datePublished" datetime="2021-10-25T17:39:07+08:00">2021-10-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-10 18:59:53" itemprop="dateModified" datetime="2023-09-10T18:59:53+08:00">2023-09-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>读书雷达by ThoughtWorks</p>
-<p>序<br>作为一个技术人，我时常会感觉到自己有太多的书要读。但是事实果真是这样吗？ThoughtWorks出品的读书雷达正是想解决这样的问题，他们想罗列出市面上最少最精品的书，帮助每一个技术人抵达最无争议的前沿知识基础彼岸。目前读书雷达已经出到第三期，距离第一期已经过去了三年，可是他们却发现三年过去了并没有多少振奋人心知识或技能能够让编辑者心悦臣服地把它加入这个清单。也就是说只要我的读书速度比这个清单的更新速度更快，追上这个时代是一定能够实现的。有了这个清单，我可以花更少的时间金钱在其他知识来源，例如一些微信技术文章，在线课程等等。读书就应该在就精品的书上花时间深入钻研，亲身实践，内化成自己的思维模式，而不是用金钱购买大量书籍和课程，草草浏览之后束之高阁。</p>
-<p>下面就按照六大分类罗列这个清单</p>
-<p>思想领导力<br>《值得信赖的顾问》<br>《专业服务公司的管理》<br>《系统之美》<br>《成为技术领导者》<br>《奈飞文化手册》<br>《技术的本质》<br>《精益企业》<br>编程实践<br>《编码的奥秘》<br>《测试驱动开发：实战与模式解析》<br>《重构：改善既有代码的设计（第2版）》<br>《领域驱动设计》<br>《架构整洁之道》<br>《敏捷软件开发：原则、模式与实践（C#版）》<br>《数据密集型应用系统设计》<br>《深入理解计算机系统》<br>《演进式架构》<br>流程交付<br>《持续交付》<br>《凤凰项目：一个IT运维的传奇故事》<br>《代码大全》<br>《全程软件测试（第3版）》<br>《深入核心的敏捷开发–ThoughtWorks五大关键实践》<br>《Accelerate》<br>个人修炼<br>《演讲的技术》<br>《软技能-代码之外的生存技能》<br>《非暴力沟通》<br>《转行》<br>《你要如何衡量你的人生》<br>《正见：佛陀的证悟》<br>《深度工作》<br>认知提升<br>《技术垄断–文化向技术投降》<br>《智能时代》<br>《升维：争夺产品认知高地的战争》<br>《大教堂与集市》<br>《团队协作的五大障碍》<br>《论大战略》<br>《复杂》<br>新兴技术<br>《零信任网络：在不可信网络中构建安全系统》<br>《Mastering Bitcoin》<br>《深度学习》<br>《代码本色：用编程模拟自然系统》</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Warren Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="code, architecture, engineering">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Warren's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/21/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E6%9E%B6%E6%9E%84-%E7%AC%AC%E5%9B%9B%E7%AB%A0/" class="post-title-link" itemprop="url">架构特性 《软件架构：架构模式、特征及实现指南》 第四章</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-21 17:35:43" itemprop="dateCreated datePublished" datetime="2021-08-21T17:35:43+08:00">2021-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-10 18:57:43" itemprop="dateModified" datetime="2023-09-10T18:57:43+08:00">2023-09-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Posted on Aug 5, 2021</p>
-<h2 id="定义架构特性"><a href="#定义架构特性" class="headerlink" title="定义架构特性"></a>定义架构特性</h2><p>架构特性必须满足三个条件</p>
-<p>指出一种非领域设计考量<br>影响设计的一些结构方面<br>对应用成功至关重要</p>
-<h2 id="运行类架构特性"><a href="#运行类架构特性" class="headerlink" title="运行类架构特性"></a>运行类架构特性</h2><p>可用性：系统的可用性<br>连续性：灾后恢复能力<br>性能：压力测试，高峰分析，函数调用频率，能力要求和响应时间<br>恢复能力：业务连续性要求，灾难发生后多块可以重新上线，影响备份策略和冗余硬件<br>可靠性&#x2F;安全性：评估系统是否需要安全地失败？是否它是性命攸关不容失败的？是否会导致公司损失一大笔钱<br>健壮性：当断电或硬件错误发生的时候处理错误和极限条件的能力<br>伸缩性：系统应对大量用户请求时候的能力</p>
-<h2 id="结构类架构特性"><a href="#结构类架构特性" class="headerlink" title="结构类架构特性"></a>结构类架构特性</h2><p>可配置性：终端用户是否能够通过有用的界面容易地改变软件的配置<br>可扩展性：插入新功能是否很重要<br>可安装性：在所有必要平台安装的容易程度<br>复用性<br>本地化能力：支持多语言，多字体<br>可维护性：系统变更有多容易<br>平台适配性：系统能够在各自平台上运行吗<br>支持能力：应用技术支持水平。需要怎样日志的水平来debug<br>可升级性：服务端或客户端可以快速从一个版本升级到新版本的能力</p>
-<h2 id="交叉类架构特性"><a href="#交叉类架构特性" class="headerlink" title="交叉类架构特性"></a>交叉类架构特性</h2><p>可访问性：能够被所有用户访问，包括色盲耳聋的失能人士<br>可归档性：数据需要在一段时间之后被归档或者删除吗<br>鉴权：验证用户身份的安全需求<br>授权：保证用户只能访问特定功能的需求<br>法律：法律对系统有什么法律约束<br>隐私：对内部员工隐藏事务的能力（加密事务以便使得即使是数据库管理员和网络架构师也无法看）<br>安全性：数据需要被加密吗？内部系统之间的沟通需要加密吗？<br>支持能力<br>可用性和可获得性：用户需要多少训练才能达成她们的目标</p>
-<h2 id="ISO定义的能力"><a href="#ISO定义的能力" class="headerlink" title="ISO定义的能力"></a>ISO定义的能力</h2><p>性能有效性：衡量在已知条件下，使用单位资源达成的性能。包括：<br>时间行为（响应时间，处理时间，吞吐量）<br>资源利用（使用资源的数量和类型）<br>能力（超出最大既定限制的程度）<br>兼容性：<br>系统和其他产品，系统或者模块能够交互信息的程度，<br>能够与其他系统在共享环境资源条件下共存的能力<br>可用性：用户可以有效，高效，满意地完成它的目标<br>可识别性：用户可以辨别系统是否适合他的需求<br>可学习性：用户可以轻松的学习如何使用软件<br>用户错误保护<br>可触达性：各自特征和能力的用户都能使用<br>可靠性<br>安全性<br>可维护性<br>可迁移性</p>
-<h2 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h2><p>永远不要瞄准最好的架构，要瞄准最不差的架构</p>
-<p>把架构设计成可迭代的</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1149,7 +1164,7 @@ C --&gt; D(Tasks)
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
