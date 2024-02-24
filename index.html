@@ -122,7 +122,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -140,6 +140,95 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/24/%E4%BD%BF%E7%94%A8python%E5%86%99%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%81%B5%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Warren Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Warren's Blog">
+      <meta itemprop="description" content="code, architecture, engineering">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Warren's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/02/24/%E4%BD%BF%E7%94%A8python%E5%86%99%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%81%B5%E6%9C%BA/" class="post-title-link" itemprop="url">使用Python实现图灵机：计算理论的魔法之旅</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-02-24 23:11:00 / Modified: 23:12:16" itemprop="dateCreated datePublished" datetime="2024-02-24T23:11:00+08:00">2024-02-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>图灵机是计算理论的基石，它提供了一种抽象的计算模型，帮助我们理解计算过程和算法。在这篇博客中，我们将一起探讨如何使用Python实现一个简单的图灵机。这个实现将包括图灵机的核心组件：纸带（Tape）、读写头（Head）、状态寄存器（StateRegister）、转移函数（TransitionFunction）以及图灵机本身。</p>
+<h3 id="1-纸带（Tape）"><a href="#1-纸带（Tape）" class="headerlink" title="1. 纸带（Tape）"></a>1. 纸带（Tape）</h3><p>首先，我们定义纸带类。纸带上的每个单元格可以包含一个符号，我们使用Python的字典来模拟这个无限长的纸带。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Tape</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.cells = &#123;&#125;</span><br><span class="line">        self.blank_symbol = <span class="string">&#x27;0&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read</span>(<span class="params">self, position</span>):</span><br><span class="line">        <span class="keyword">return</span> self.cells.get(position, self.blank_symbol)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">write</span>(<span class="params">self, position, symbol</span>):</span><br><span class="line">        self.cells[position] = symbol</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-读写头（Head）"><a href="#2-读写头（Head）" class="headerlink" title="2. 读写头（Head）"></a>2. 读写头（Head）</h3><p>读写头负责在纸带上移动并读写符号。它知道当前位置，并能执行左移、右移、读取和写入操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Head</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, tape</span>):</span><br><span class="line">        self.position = <span class="number">0</span></span><br><span class="line">        self.tape = tape</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">move_left</span>(<span class="params">self</span>):</span><br><span class="line">        self.position -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">move_right</span>(<span class="params">self</span>):</span><br><span class="line">        self.position += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.tape.read(self.position)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">write</span>(<span class="params">self, symbol</span>):</span><br><span class="line">        self.tape.write(self.position, symbol)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-状态寄存器（StateRegister）"><a href="#3-状态寄存器（StateRegister）" class="headerlink" title="3. 状态寄存器（StateRegister）"></a>3. 状态寄存器（StateRegister）</h3><p>状态寄存器用于存储图灵机的当前状态。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StateRegister</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.current_state = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_state</span>(<span class="params">self, state</span>):</span><br><span class="line">        self.current_state = state</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_state</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.current_state</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-转移函数（TransitionFunction）"><a href="#4-转移函数（TransitionFunction）" class="headerlink" title="4. 转移函数（TransitionFunction）"></a>4. 转移函数（TransitionFunction）</h3><p>转移函数定义了图灵机在不同状态和读写头读到的符号时的行为。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TransitionFunction</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.transitions = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_transition</span>(<span class="params">self, current_state, current_symbol, new_state, new_symbol, direction</span>):</span><br><span class="line">        self.transitions[(current_state, current_symbol)] = (new_state, new_symbol, direction)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_transition</span>(<span class="params">self, current_state, current_symbol</span>):</span><br><span class="line">        <span class="keyword">return</span> self.transitions.get((current_state, current_symbol), <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-图灵机（TuringMachine）"><a href="#5-图灵机（TuringMachine）" class="headerlink" title="5. 图灵机（TuringMachine）"></a>5. 图灵机（TuringMachine）</h3><p>最后，我们将所有组件组合到图灵机类中，并实现运行方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TuringMachine</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.tape = Tape()</span><br><span class="line">        self.head = Head(self.tape)</span><br><span class="line">        self.state_register = StateRegister()</span><br><span class="line">        self.transition_function = TransitionFunction()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            current_symbol = self.head.read()</span><br><span class="line">            current_state = self.state_register.get_state()</span><br><span class="line">            transition = self.transition_function.get_transition(current_state, current_symbol)</span><br><span class="line">            <span class="keyword">if</span> transition <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            new_state, new_symbol, direction = transition</span><br><span class="line">            self.head.write(new_symbol)</span><br><span class="line">            <span class="keyword">if</span> direction == <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">                self.head.move_left()</span><br><span class="line">            <span class="keyword">elif</span> direction == <span class="string">&#x27;R&#x27;</span>:</span><br><span class="line">                self.head.move_right()</span><br><span class="line">            self.state_register.set_state(new_state)</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例运行"><a href="#示例运行" class="headerlink" title="示例运行"></a>示例运行</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tm = TuringMachine()</span><br><span class="line">tm.state_register.set_state(<span class="string">&#x27;start&#x27;</span>)</span><br><span class="line">tm.transition_function.add_transition(<span class="string">&#x27;start&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;halt&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;R&#x27;</span>)</span><br><span class="line">tm.run()</span><br><span class="line"><span class="built_in">print</span>(tm.tape.cells)</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，图灵机从起始状态开始，在读到符号’0’时写入’1’并向右移动，然后进入停止状态。运行结果应该是 <code>&#123;0: &#39;1&#39;&#125;</code>。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>通过这个简单的实现，我们深入了解了图灵机的基本组件以及它们之间的交互。使用Python编写图灵机的实现，使我们能够直观地理解计算理论的基本概念，同时也展示了面向对象编程在建模复杂系统中的优越性。这只是计算理论和图灵机的冰山一角，希望这篇博客能激发你对计算机科学基础的更深层次探索。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1016,109 +1105,6 @@ C --&gt; D(Tasks)
 <p>长期来看，几乎所有的代码都是要改的。容易被读懂的代码更容易被修改而得到性能优化。性能优化要如果没有数量级的变化就不知道为它牺牲可读性。因为硬件性能一直以摩尔定律的速度提升，所有的软件不做任何改变都能从硬件升级中获得红利。</p>
 <p>测试防护网是一切的基本</p>
 <p>既然代码注定要被多次修改，那么如何保证不破坏原有功能呢？答案只有一个：自动化测试。我们常说为了短期快速完成而走的临时方案是技术负债，长期来看，几乎所有的代码在刚刚诞生的那一刻都是负债。那么有没有什么代码在他诞生的一刻就是资产呢？如果有，我觉得就是自动化测试。只要代码后续还需要改，自动化测试就是保障我们不改出毛病的保障。设计良好的自动化测试，无疑会占据我们的开发时间，但它能保证我们的进步都是可叠加的。结硬寨，打呆仗。这是我喜欢的做事哲学。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/10/SaaS%E8%A1%8C%E4%B8%9A%E6%BC%8F%E6%96%97%E6%A8%A1%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Warren Wu">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Warren's Blog">
-      <meta itemprop="description" content="code, architecture, engineering">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Warren's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/10/SaaS%E8%A1%8C%E4%B8%9A%E6%BC%8F%E6%96%97%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">SaaS行业漏斗模型</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-10 17:44:23" itemprop="dateCreated datePublished" datetime="2022-10-10T17:44:23+08:00">2022-10-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-09-10 19:03:35" itemprop="dateModified" datetime="2023-09-10T19:03:35+08:00">2023-09-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>SaaS行业的漏斗模型无非如下：</p>
-<blockquote>
-<p>接触-&gt;注册-&gt;使用-&gt;留存-&gt;订阅-&gt;续费</p>
-</blockquote>
-<p>现在流行的增长黑客方法是</p>
-<ul>
-<li><p>度量每一步转化过程的转化概率</p>
-</li>
-<li><p>提出每一步可能提升转化的方案</p>
-</li>
-<li><p>使用A&#x2F;B测试验证方案</p>
-</li>
-<li><p>上线经过验证的方案</p>
-</li>
-<li><p>重复以上循环</p>
-</li>
-</ul>
-<p>这种数据驱动的模式已经比过去依靠天才顶层设计和拍脑袋的方式成功率高出不少，但是能否进一步升级这种模式？我觉得这种模式最大的缺陷是，除了数据度量可以自动化之外，每一步都需要人工介入</p>
-<p>人工介入存在以下问题</p>
-<ul>
-<li><p>反馈迭代周期长</p>
-</li>
-<li><p>人工介入就不可避免认知偏误带来的问题</p>
-</li>
-<li><p>不可能给出太复杂的模型</p>
-</li>
-</ul>
-<p>最后一点重点解释一下。有没有想过为啥是以上6步转化呢？为什么不是60步呢？为什么是一条线型漏斗模型，而不是一个马尔可夫状态转移矩阵？事实上如果用户在应用内的每一次点击都算的话，肯定是远远不止6步，付费路径也肯定有无数种可能。说到底其实都是因为人脑容量有限，不可能给出过度复杂的模型。但做过机器学习的都知道太简单的模型不可能做出好的效果。</p>
 
       
     </div>

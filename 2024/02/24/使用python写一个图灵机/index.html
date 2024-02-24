@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="引言图灵机是计算理论的基石，它提供了一种抽象的计算模型，帮助我们理解计算过程和算法。在这篇博客中，我们将一起探讨如何使用Python实现一个简单的图灵机。这个实现将包括图灵机的核心组件：纸带（Tape）、读写头（Head）、状态寄存器（StateRegister）、转移函数（TransitionFunction）以及图灵机本身。 1. 纸带（Tape）首先，我们定义纸带类。纸带上的每个单元格可以包">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="使用Python实现图灵机：计算理论的魔法之旅">
+<meta property="og:url" content="http://example.com/2024/02/24/%E4%BD%BF%E7%94%A8python%E5%86%99%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%81%B5%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Warren&#39;s Blog">
+<meta property="og:description" content="引言图灵机是计算理论的基石，它提供了一种抽象的计算模型，帮助我们理解计算过程和算法。在这篇博客中，我们将一起探讨如何使用Python实现一个简单的图灵机。这个实现将包括图灵机的核心组件：纸带（Tape）、读写头（Head）、状态寄存器（StateRegister）、转移函数（TransitionFunction）以及图灵机本身。 1. 纸带（Tape）首先，我们定义纸带类。纸带上的每个单元格可以包">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-24T15:11:00.000Z">
+<meta property="article:modified_time" content="2024-02-24T15:12:16.319Z">
+<meta property="article:author" content="Warren Wu">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/02/24/%E4%BD%BF%E7%94%A8python%E5%86%99%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%81%B5%E6%9C%BA/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/02/24/%E4%BD%BF%E7%94%A8python%E5%86%99%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%81%B5%E6%9C%BA/","path":"2024/02/24/使用python写一个图灵机/","title":"使用Python实现图灵机：计算理论的魔法之旅"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>使用Python实现图灵机：计算理论的魔法之旅 | Warren's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Warren's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%BA%B8%E5%B8%A6%EF%BC%88Tape%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">1. 纸带（Tape）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AF%BB%E5%86%99%E5%A4%B4%EF%BC%88Head%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">2. 读写头（Head）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%8A%B6%E6%80%81%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%88StateRegister%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">3. 状态寄存器（StateRegister）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%BD%AC%E7%A7%BB%E5%87%BD%E6%95%B0%EF%BC%88TransitionFunction%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">4. 转移函数（TransitionFunction）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%9B%BE%E7%81%B5%E6%9C%BA%EF%BC%88TuringMachine%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">5. 图灵机（TuringMachine）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E8%BF%90%E8%A1%8C"><span class="nav-number">7.</span> <span class="nav-text">示例运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">8.</span> <span class="nav-text">结论</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Warren Wu</p>
+  <div class="site-description" itemprop="description">code, architecture, engineering</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/24/%E4%BD%BF%E7%94%A8python%E5%86%99%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%81%B5%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Warren Wu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Warren's Blog">
+      <meta itemprop="description" content="code, architecture, engineering">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="使用Python实现图灵机：计算理论的魔法之旅 | Warren's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用Python实现图灵机：计算理论的魔法之旅
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-02-24 23:11:00 / Modified: 23:12:16" itemprop="dateCreated datePublished" datetime="2024-02-24T23:11:00+08:00">2024-02-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>图灵机是计算理论的基石，它提供了一种抽象的计算模型，帮助我们理解计算过程和算法。在这篇博客中，我们将一起探讨如何使用Python实现一个简单的图灵机。这个实现将包括图灵机的核心组件：纸带（Tape）、读写头（Head）、状态寄存器（StateRegister）、转移函数（TransitionFunction）以及图灵机本身。</p>
+<h3 id="1-纸带（Tape）"><a href="#1-纸带（Tape）" class="headerlink" title="1. 纸带（Tape）"></a>1. 纸带（Tape）</h3><p>首先，我们定义纸带类。纸带上的每个单元格可以包含一个符号，我们使用Python的字典来模拟这个无限长的纸带。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Tape</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.cells = &#123;&#125;</span><br><span class="line">        self.blank_symbol = <span class="string">&#x27;0&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read</span>(<span class="params">self, position</span>):</span><br><span class="line">        <span class="keyword">return</span> self.cells.get(position, self.blank_symbol)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">write</span>(<span class="params">self, position, symbol</span>):</span><br><span class="line">        self.cells[position] = symbol</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-读写头（Head）"><a href="#2-读写头（Head）" class="headerlink" title="2. 读写头（Head）"></a>2. 读写头（Head）</h3><p>读写头负责在纸带上移动并读写符号。它知道当前位置，并能执行左移、右移、读取和写入操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Head</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, tape</span>):</span><br><span class="line">        self.position = <span class="number">0</span></span><br><span class="line">        self.tape = tape</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">move_left</span>(<span class="params">self</span>):</span><br><span class="line">        self.position -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">move_right</span>(<span class="params">self</span>):</span><br><span class="line">        self.position += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">read</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.tape.read(self.position)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">write</span>(<span class="params">self, symbol</span>):</span><br><span class="line">        self.tape.write(self.position, symbol)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-状态寄存器（StateRegister）"><a href="#3-状态寄存器（StateRegister）" class="headerlink" title="3. 状态寄存器（StateRegister）"></a>3. 状态寄存器（StateRegister）</h3><p>状态寄存器用于存储图灵机的当前状态。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StateRegister</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.current_state = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">set_state</span>(<span class="params">self, state</span>):</span><br><span class="line">        self.current_state = state</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_state</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> self.current_state</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-转移函数（TransitionFunction）"><a href="#4-转移函数（TransitionFunction）" class="headerlink" title="4. 转移函数（TransitionFunction）"></a>4. 转移函数（TransitionFunction）</h3><p>转移函数定义了图灵机在不同状态和读写头读到的符号时的行为。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TransitionFunction</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.transitions = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_transition</span>(<span class="params">self, current_state, current_symbol, new_state, new_symbol, direction</span>):</span><br><span class="line">        self.transitions[(current_state, current_symbol)] = (new_state, new_symbol, direction)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_transition</span>(<span class="params">self, current_state, current_symbol</span>):</span><br><span class="line">        <span class="keyword">return</span> self.transitions.get((current_state, current_symbol), <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-图灵机（TuringMachine）"><a href="#5-图灵机（TuringMachine）" class="headerlink" title="5. 图灵机（TuringMachine）"></a>5. 图灵机（TuringMachine）</h3><p>最后，我们将所有组件组合到图灵机类中，并实现运行方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TuringMachine</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.tape = Tape()</span><br><span class="line">        self.head = Head(self.tape)</span><br><span class="line">        self.state_register = StateRegister()</span><br><span class="line">        self.transition_function = TransitionFunction()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">run</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            current_symbol = self.head.read()</span><br><span class="line">            current_state = self.state_register.get_state()</span><br><span class="line">            transition = self.transition_function.get_transition(current_state, current_symbol)</span><br><span class="line">            <span class="keyword">if</span> transition <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            new_state, new_symbol, direction = transition</span><br><span class="line">            self.head.write(new_symbol)</span><br><span class="line">            <span class="keyword">if</span> direction == <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">                self.head.move_left()</span><br><span class="line">            <span class="keyword">elif</span> direction == <span class="string">&#x27;R&#x27;</span>:</span><br><span class="line">                self.head.move_right()</span><br><span class="line">            self.state_register.set_state(new_state)</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例运行"><a href="#示例运行" class="headerlink" title="示例运行"></a>示例运行</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tm = TuringMachine()</span><br><span class="line">tm.state_register.set_state(<span class="string">&#x27;start&#x27;</span>)</span><br><span class="line">tm.transition_function.add_transition(<span class="string">&#x27;start&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;halt&#x27;</span>, <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;R&#x27;</span>)</span><br><span class="line">tm.run()</span><br><span class="line"><span class="built_in">print</span>(tm.tape.cells)</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，图灵机从起始状态开始，在读到符号’0’时写入’1’并向右移动，然后进入停止状态。运行结果应该是 <code>&#123;0: &#39;1&#39;&#125;</code>。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>通过这个简单的实现，我们深入了解了图灵机的基本组件以及它们之间的交互。使用Python编写图灵机的实现，使我们能够直观地理解计算理论的基本概念，同时也展示了面向对象编程在建模复杂系统中的优越性。这只是计算理论和图灵机的冰山一角，希望这篇博客能激发你对计算机科学基础的更深层次探索。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/02/19/%E4%BB%8E%E7%BA%A6%E6%9D%9F%E8%A7%86%E8%A7%92%E7%9C%8B%E5%BE%85%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84/" rel="prev" title="从约束视角看待后端架构">
+                  <i class="fa fa-angle-left"></i> 从约束视角看待后端架构
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Warren Wu</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.0/mermaid.min.js","integrity":"sha256-9y71g5Lz/KLsHjB8uXwnkuWDtAMDSzD/HdIbqhJfTAI="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
